@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050505;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #111115 0%, #050505 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+}
+
+.profile-card {
+    text-align: center;
+    animation: fadeIn 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.avatar-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.8rem;
+}
+
+.avatar-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.05) 0%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(8px);
+    transition: background 0.5s ease;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    transition:
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.6s ease;
+}
+
+.username {
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    color: #737373;
+    text-transform: lowercase;
+    transition:
+        color 0.4s ease,
+        text-shadow 0.4s ease;
+}
+
+.profile-card:hover .avatar {
+    transform: scale(1.04);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.profile-card:hover .avatar-wrapper::before {
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.08) 0%,
+        transparent 70%
+    );
+}
+
+.profile-card:hover .username {
+    color: #e5e5e5;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
